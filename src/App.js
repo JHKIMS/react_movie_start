@@ -2,7 +2,25 @@
 // import styles from "./App.module.css"
 import {useState, useEffect} from "react"
 
+function Hello(){
+  // function byFn() {
+  //   console.log("bye :(");
+  // }
+  // function hiFn(){
+  //   console.log("Created :)");
+  //   return byFn;
+  // }
+  useEffect(() => {
+    console.log("hi :)");
+    return () => console.log("bye :(");
+  },[])
+  return <h1>Hello</h1>
+}
+
 function App() {
+  const [cleanup, setCleanup] = useState(false);
+  const cleanFunc = () => setCleanup((prevClean) => !prevClean);
+
   const [counter, setValue] = useState(0);
   const [keyword, setKeyword] = useState("");
   const onClick = () => setValue((prevCount) => prevCount+1);
@@ -34,6 +52,9 @@ function App() {
       
       <h1>{counter}</h1>
       <button onClick={onClick}>Click me</button>
+
+      {cleanup ? <Hello /> : null}
+      <button onClick={cleanFunc}>{cleanup ? "Hide":"Show"}</button>
     </div>
   );
 }
