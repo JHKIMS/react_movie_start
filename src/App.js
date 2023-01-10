@@ -72,7 +72,7 @@ function App() {
         <Route path="/coin">
           <Coin />
         </Route>
-        <Route path="/movie">
+        <Route path="/movie/:id">
           <Detail />
         </Route>
         <Route path="/">
